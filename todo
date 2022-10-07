@@ -1,0 +1,84 @@
+//MAKE LAYOUT COMPONENT
+
+php artisan make:component layout
+
+//CREATE HELPER FOR WRITING CUSTOM FUNCTIONS
+//https://dev.to/kingsconsult/how-to-create-laravel-8-helpers-function-global-function-d8n
+
+//MAKE CONTROLLERS
+php artisan make:controller UserController
+
+
+<nav class="navbar navbar-expand-lg bg-primary navbar-light ">
+        <div class="container-fluid">
+             <a href="/" class="navbar-brand p-0">
+                <h1 class="m-0">{{env('APP_NAME')}}</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="/" class="nav-item nav-link">Home</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Guides</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="/#investment-plans" class="dropdown-item">Investment plans</a>
+                            <a href="/#testimonial" class="dropdown-item">Testimonials</a>
+                            <a href="#" class="dropdown-item">Start Investing</a>
+                        </div>
+                    </div>
+
+                    @auth
+                    <a href="/dashboard" class="nav-item nav-link">Dashboard</a>
+                    <form method="POST" action="/logout" class="">
+                        @csrf
+                        <button type="submit" class="nav-item  btn btn-secondary btn-sm text-light rounded-pill py-2 px-4 ms-3 mt-4">
+                            <i class="fa-solid fa-door-open"></i> Logout
+                        </button>
+                    </form>
+                    @else
+                    <a href="/register" class="nav-item nav-link">Register</a>
+                    <a href="/login" class="nav-item nav-link">Login</a>
+                    @endauth
+                </div>
+              </div>
+
+              
+        </div>
+      </nav>
+      
+ <!-- <div class="col-sm-4 text-center">
+                    <p class="h4 mb-4">Bitcoin (BTC)</p>
+                    <img src="{{ asset('img/dashboard/BTC_Logo.png') }}" class="crypto-logo mb-5">
+                    <p class="text-dark">Scan the QR Code below</p>
+                    <img src="{{ asset( $wallets['BTC']['QR Code']) }}"  class="crypto-QR mb-5" >
+                    <p class="text-dark">or copy wallet address</p>
+                    <div class="input-group mb-5">
+                        <input type="text" class="form-control" value="{{ $wallets['BTC']['Address'] }}" id="btc_address" disabled>
+                        <button type="button" class="btn btn-primary" onclick="btc()" >Copy</button>
+                      </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <p class="h4 mb-4">Ethereum (ETH)</p>
+                    <img src="{{ asset('img/dashboard/ETH_Logo.png') }}" class="crypto-logo mb-5">
+                    <p class="text-dark">Scan the QR Code below</p>
+                    <img src="{{ asset( $wallets['ETH']['QR Code']) }}"  class="crypto-QR mb-5" >
+                    <p class="text-dark">or copy wallet address</p>
+                    <div class="input-group mb-5">
+                        <input type="text" class="form-control" value="{{ $wallets['ETH']['Address'] }}" id="eth_address" disabled>
+                        <button type="button" class="btn btn-primary" onclick="eth()" >Copy</button>
+                      </div>
+                   
+                </div>
+                <div class="col-sm-4 text-center">
+                    <p class="h4 mb-4">USDT</p>
+                    <img src="{{ asset('img/dashboard/USDT_Logo.png') }}" class="crypto-logo mb-5">
+                    <p class="text-dark">Scan the QR Code below</p>
+                    <img src="{{ asset( $wallets['USDT']['QR Code']) }}"  class="crypto-QR mb-5" >
+                    <p class="text-dark">or copy wallet address</p>
+                    <div class="input-group mb-5">
+                        <input type="text" class="form-control" value="{{ $wallets['USDT']['Address'] }}" id="usdt_address" disabled>
+                        <button type="button" class="btn btn-primary" onclick="usdt()" >Copy</button>
+                      </div>
+                </div>-->
